@@ -11,6 +11,8 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const message_entity_1 = require("./message/message.entity");
 const message_module_1 = require("./message/message.module");
+const user_module_1 = require("./user/user.module");
+const user_entity_1 = require("./user/user.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -20,10 +22,11 @@ exports.AppModule = AppModule = __decorate([
             typeorm_1.TypeOrmModule.forRoot({
                 type: "sqlite",
                 database: "./kontaktformular_db.sqlite",
-                entities: [message_entity_1.Message],
+                entities: [message_entity_1.Message, user_entity_1.User],
                 synchronize: true,
             }),
             message_module_1.MessageModule,
+            user_module_1.UserModule,
         ],
     })
 ], AppModule);

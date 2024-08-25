@@ -2,16 +2,20 @@ import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Message } from "./message/message.entity";
 import { MessageModule } from "./message/message.module";
+import { UserModule } from './user/user.module';
+import { User } from './user/user.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: "sqlite",
       database: "./kontaktformular_db.sqlite",
-      entities: [Message],
+      entities: [Message, User], // Add User entity here
       synchronize: true,
     }),
     MessageModule,
+    UserModule, // Add UserModule here
   ],
+  // Remove UserController from here as it's now part of UserModule
 })
 export class AppModule {}
