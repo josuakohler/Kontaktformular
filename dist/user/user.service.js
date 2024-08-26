@@ -23,6 +23,7 @@ let UserService = class UserService {
         this.usersRepository = usersRepository;
     }
     async validateUser(username, password) {
+        console.log(this.usersRepository);
         const user = await this.usersRepository.findOne({ where: { username } });
         if (user && (await bcrypt.compare(password, user.password))) {
             return user;

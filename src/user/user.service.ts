@@ -12,10 +12,13 @@ export class UserService {
   ) {}
 
   async validateUser(username: string, password: string): Promise<User | null> {
+    console.log(this.usersRepository);
     const user = await this.usersRepository.findOne({ where: { username } });
+
     if (user && (await bcrypt.compare(password, user.password))) {
       return user;
     }
+
     return null;
   }
 }
