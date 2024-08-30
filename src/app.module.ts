@@ -4,6 +4,8 @@ import { Message } from "./message/message.entity";
 import { MessageModule } from "./message/message.module";
 import { UserModule } from './user/user.module';
 import { User } from './user/user.entity';
+import { MailService } from './mail/mail.service';
+import { ContactController } from './contact/contact.controller';
 
 @Module({
   imports: [
@@ -16,6 +18,8 @@ import { User } from './user/user.entity';
     MessageModule,
     UserModule, // Add UserModule here
   ],
+  providers: [MailService],
+  controllers: [ContactController],
   // Remove UserController from here as it's now part of UserModule
 })
 export class AppModule {}

@@ -13,6 +13,8 @@ const message_entity_1 = require("./message/message.entity");
 const message_module_1 = require("./message/message.module");
 const user_module_1 = require("./user/user.module");
 const user_entity_1 = require("./user/user.entity");
+const mail_service_1 = require("./mail/mail.service");
+const contact_controller_1 = require("./contact/contact.controller");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -28,6 +30,8 @@ exports.AppModule = AppModule = __decorate([
             message_module_1.MessageModule,
             user_module_1.UserModule,
         ],
+        providers: [mail_service_1.MailService],
+        controllers: [contact_controller_1.ContactController],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
