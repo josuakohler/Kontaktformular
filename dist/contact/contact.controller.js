@@ -19,14 +19,6 @@ let ContactController = class ContactController {
     constructor(mailService) {
         this.mailService = mailService;
     }
-    async sendMessage(contactForm) {
-        const { firstName, lastName, email, message } = contactForm;
-        const verificationLink = `https://yourapp.com/verify?email=${email}`;
-        await this.mailService.sendVerificationEmail(email, firstName, lastName, verificationLink);
-        const responseMessage = "Thanks for verify your Mail, we will contact you soon.";
-        await this.mailService.sendResponseEmail(email, firstName, lastName, responseMessage);
-        return { status: "Message sent and verification email dispatched" };
-    }
     async sendReply(replyMessage) {
         const { firstName, lastName, email, message } = replyMessage;
         await this.mailService.sendResponseEmail(email, firstName, lastName, message);
@@ -34,13 +26,6 @@ let ContactController = class ContactController {
     }
 };
 exports.ContactController = ContactController;
-__decorate([
-    (0, common_1.Post)("send-message"),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Promise)
-], ContactController.prototype, "sendMessage", null);
 __decorate([
     (0, common_1.Post)("reply-message"),
     __param(0, (0, common_1.Body)()),

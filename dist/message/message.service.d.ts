@@ -1,5 +1,5 @@
-import { Repository } from 'typeorm';
-import { Message } from './message.entity';
+import { Repository } from "typeorm";
+import { Message } from "./message.entity";
 export declare class MessageService {
     private messageRepository;
     constructor(messageRepository: Repository<Message>);
